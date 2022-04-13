@@ -2,3 +2,6 @@
 	path = parsing-as-pretraining
 	url = https://github.com/davidarps/parsing-as-pretraining
 	branch = forprobing
+[submodule "NeuroX"]
+	path = NeuroX
+	url = https://github.com/davidarps/NeuroX/
