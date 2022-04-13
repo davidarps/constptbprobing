@@ -1,0 +1,4 @@
+[submodule "parsing-as-pretraining"]
+	path = parsing-as-pretraining
+	url = https://github.com/davidarps/parsing-as-pretraining
+	branch = forprobing
