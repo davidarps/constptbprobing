@@ -2,6 +2,9 @@
 
 # Constituency structure in language model representations
 
+Code for the paper [Probing for Constituency Structure in Neural Language Models](https://arxiv.org/abs/2204.06201) by David Arps, Younes Samih, Laura Kallmeyer, and Hassan Sajjad.
+
+
 ## Installation
 
 Install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
@@ -82,13 +85,12 @@ Once you created the necessary files, you can run the experiments using
 
 This means that you run the experiments with DistilBERT, using roughly 8000 sentences for training and 2000 for evaluation. You can experiment with this amount of data on 16GB RAM, and additionally this requires 16GB of free harddrive space. 
 
-for the chunking experiments, or 
-
+To run the LCA experiments, run
 ```
 ./prepare_and_run_lca_exps.sh distilbert-base-uncased 50000 150
 ```
 
-for the lca experiments. This requires around 120 GB of hard drive space and 16GB RAM. 
+This requires around 120 GB of hard drive space and 16GB RAM. 
 Note on data format: In the chunking experiments, the format of the data that is used as input to the experimental script is straightforward: 
 1. Files with the textual data, where tokens are separated by blanks and sentences are separated by line breaks 
 2. Files with the chunking labels, parallel to 1.

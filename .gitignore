@@ -1,0 +1,10 @@
+bin/
+data/
+*.pyc
+log/
+*.hdf5
+
+exp_chunk/
+exp_lca/
+
+launch.json
