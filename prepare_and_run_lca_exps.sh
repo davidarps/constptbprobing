@@ -6,17 +6,16 @@ cutoff=$3
 mkdir exp_lca/
 echo "STEP: extract LCA labels"
 echo "STEP: orig"
-python3 data_prep/extract_lca_from_ptb.py -ptb_notr ptb-0-18_orig.notrace -text_toks exp_lca/train_lca_orig_text.txt -rel_toks exp_lca/train_lca_orig_rel_toks.txt -rel_labels exp_lca/train_lca_orig_rel_labels.txt
-python3 data_prep/extract_lca_from_ptb.py -ptb_notr ptb-19-21_orig.notrace -text_toks exp_lca/test_lca_orig_text.txt -rel_toks exp_lca/test_lca_orig_rel_toks.txt -rel_labels exp_lca/test_lca_orig_rel_labels.txt -cutoff $cutoff -max_sent_length 20
+python3 data_prep/extract_lca_from_ptb.py -ptb_notr data/PennTreebank/ptb-train_orig.notrace -text_toks exp_lca/train_lca_orig_text.txt -rel_toks exp_lca/train_lca_orig_rel_toks.txt -rel_labels exp_lca/train_lca_orig_rel_labels.txt
+python3 data_prep/extract_lca_from_ptb.py -ptb_notr data/PennTreebank/ptb-test_orig.notrace -text_toks exp_lca/test_lca_orig_text.txt -rel_toks exp_lca/test_lca_orig_rel_toks.txt -rel_labels exp_lca/test_lca_orig_rel_labels.txt -cutoff $cutoff -max_sent_length 20
 
 echo "STEP: 033"
-python3 data_prep/extract_lca_from_ptb.py -ptb_notr ptb-0-18_033.notrace -text_toks exp_lca/train_lca_033_text.txt -rel_toks exp_lca/train_lca_033_rel_toks.txt -rel_labels exp_lca/train_lca_033_rel_labels.txt
-python3 data_prep/extract_lca_from_ptb.py -ptb_notr ptb-19-24_033.notrace -text_toks exp_lca/test_lca_033_text.txt -rel_toks exp_lca/test_lca_033_rel_toks.txt -rel_labels exp_lca/test_lca_033_rel_labels.txt -cutoff $cutoff -max_sent_length 20
+python3 data_prep/extract_lca_from_ptb.py -ptb_notr data/PennTreebank/ptb-train_033.notrace -text_toks exp_lca/train_lca_033_text.txt -rel_toks exp_lca/train_lca_033_rel_toks.txt -rel_labels exp_lca/train_lca_033_rel_labels.txt
+python3 data_prep/extract_lca_from_ptb.py -ptb_notr data/PennTreebank/ptb-test_033.notrace -text_toks exp_lca/test_lca_033_text.txt -rel_toks exp_lca/test_lca_033_rel_toks.txt -rel_labels exp_lca/test_lca_033_rel_labels.txt -cutoff $cutoff -max_sent_length 20
 
 echo "STEP: 067"
-python3 data_prep/extract_lca_from_ptb.py -ptb_notr ptb-0-18_067.notrace -text_toks exp_lca/train_lca_067_text.txt -rel_toks exp_lca/train_lca_067_rel_toks.txt -rel_labels exp_lca/train_lca_067_rel_labels.txt
-python3 data_prep/extract_lca_from_ptb.py -ptb_notr ptb-19-24_067.notrace -text_toks exp_lca/test_lca_067_text.txt -rel_toks exp_lca/test_lca_067_rel_toks.txt -rel_labels exp_lca/test_lca_067_rel_labels.txt -cutoff $cutoff -max_sent_length 20
-
+python3 data_prep/extract_lca_from_ptb.py -ptb_notr data/PennTreebank/ptb-train_067.notrace -text_toks exp_lca/train_lca_067_text.txt -rel_toks exp_lca/train_lca_067_rel_toks.txt -rel_labels exp_lca/train_lca_067_rel_labels.txt
+python3 data_prep/extract_lca_from_ptb.py -ptb_notr data/PennTreebank/ptb-test_067.notrace -text_toks exp_lca/test_lca_067_text.txt -rel_toks exp_lca/test_lca_067_rel_toks.txt -rel_labels exp_lca/test_lca_067_rel_labels.txt -cutoff $cutoff -max_sent_length 20
 
 echo "STEP: replace quotes"
 ./data_prep/replace-quotes-XLNet.sh exp_lca/train_lca_orig_text.txt
@@ -80,7 +79,6 @@ echo "STEP: test, 033"
 python3 NeuroX/neurox/data/extraction/transformers_extractor.py --aggregation average $model exp_lca/test_lca_033_text.txt exp_lca/$model/test_033_activations.hdf5
 echo "STEP: test, 067"
 python3 NeuroX/neurox/data/extraction/transformers_extractor.py --aggregation average $model exp_lca/test_lca_067_text.txt exp_lca/$model/test_067_activations.hdf5
-
 echo "STEP: combine activations"
 for combtype in "concat" "max" "avg"
 do

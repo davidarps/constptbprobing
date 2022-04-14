@@ -104,9 +104,10 @@ In the LCA experiments, the experimental script is the same, but the input files
 ## Running the parse tree reconstruction
 
 
-Running these experiments consists of two steps. In the first step, you provide the name of the LM and the number of sentences in the training and evaluation dataset. In this case, it is 8000 sentences for training and 1000 for eval.
+Running these experiments consists of two steps. In the first step, you provide the name of the LM and the number of sentences in the training and evaluation dataset. Below, it is 8000 sentences for training and 1000 for eval.
 Then, you use the [code](https://github.com/aghie/parsing-as-pretraining) of Vilares et al. (AAAI 2020, "Parsing as Pretraining") to reconstruct and evaluate the predicted trees.
 
+Example script for running the experiments with original data:
 
 ```
 ./prepare_and_run_tree_exps.sh distilbert-base-uncased 8000 1000
