@@ -1,4 +1,4 @@
-name: syntax-prob-env
+name: syntax-prob-env-re
 channels:
   - conda-forge
   - anaconda
